@@ -1,0 +1,20 @@
+<mat-card class="example-card"
+		  style="margin: 0 10px;">
+	<mat-card-header>
+		<mat-card-title>{{drink.name}}</mat-card-title>
+		<mat-card-subtitle>Количество : {{drink.count}}</mat-card-subtitle>
+	</mat-card-header>
+	<img mat-card-image
+		 style="width:400px; height:400px;"
+		 [src]="getInageUri(drink.imageUri)"
+		 alt="Drink">
+	<mat-card-content>
+		Цена : {{drink.price}}
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-raised-button
+				*ngIf="isAdmin"
+				color="accent"
+				(click)="removeCoin(drink)">Удалить</button>
+	</mat-card-actions>
+</mat-card>

@@ -1,0 +1,39 @@
+<div style="margin: 20px;">
+	<mat-form-field>
+		<input matInput
+			   placeholder="Название"
+			   #name>
+	</mat-form-field>
+	<mat-form-field>
+		<input matInput
+			   value="50"
+			   placeholder="Цена"
+			   #price>
+	</mat-form-field>
+	<mat-form-field>
+		<input matInput
+			   value="0"
+			   placeholder="Количество"
+			   #count>
+	</mat-form-field>
+
+	<input type="file"
+		   placeholder="Загрузить изображение"
+		   accept=".jpg,.png"
+		   #imageUploader>
+
+	<button mat-button
+			(click)="addDrink(name.value, price.value, count.value, imageUploader.files, 'Закрыть')">Добавить</button>
+	<button mat-button
+			(click)="updateDrink(name.value, price.value, count.value, imageUploader.files, 'Закрыть')">Изменить</button>
+</div>
+
+
+<div style="display: flex; flex-flow: row; flex-wrap: wrap; margin: 20px;">
+	<ng-container *ngFor="let drink of drinks">
+		<drink-card [(drink)]="drink"
+					[isAdmin]="true"
+					(drinkDeleted)="onElementDeleted(drink)"
+					(click)="setDrink(drink)"></drink-card>
+	</ng-container>
+</div>

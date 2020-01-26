@@ -1,0 +1,30 @@
+<div style="margin: 20px;">
+	<mat-form-field>
+		<input matInput
+			   value="50"
+			   placeholder="Номинал"
+			   #par>
+	</mat-form-field>
+
+	<mat-checkbox [(ngModel)]="isActive">Активен</mat-checkbox>
+
+	<button mat-button
+			(click)="addCoin(par.value, 'Закрыть')">Добавить</button>
+</div>
+<mat-grid-list cols="8"
+			   rowHeight="2:1">
+	<ng-container *ngFor="let coin of coins">
+		<mat-grid-tile>
+			<mat-card>
+				Номинал: {{coin.par}}
+				<br />
+				<mat-checkbox (change)="updateCoin(coin)"
+							  [(ngModel)]="coin.isActive">Активен</mat-checkbox>
+				<br />
+				<button mat-raised-button
+						color="accent"
+						(click)="removeCoin(coin)">Удалить</button>
+			</mat-card>
+		</mat-grid-tile>
+	</ng-container>
+</mat-grid-list>

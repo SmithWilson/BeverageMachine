@@ -1,0 +1,26 @@
+<div style="margin: 20px;">
+	<mat-form-field>
+		<input matInput
+			   value="50"
+			   placeholder="Количество"
+			   #count>
+	</mat-form-field>
+
+	<mat-checkbox [(ngModel)]="isActive">Активен</mat-checkbox>
+
+	<button mat-button
+			(click)="updateCoin(count.value, 'Закрыть')">Изменить</button>
+</div>
+<mat-grid-list cols="8"
+			   rowHeight="2:1">
+	<ng-container *ngFor="let coin of coins">
+		<mat-grid-tile>
+			<mat-card (click)="setCoin(coin)">
+				Номинал: {{coin.par}}
+				<br />
+				Количество: {{coin.count}}
+				<br />
+			</mat-card>
+		</mat-grid-tile>
+	</ng-container>
+</mat-grid-list>

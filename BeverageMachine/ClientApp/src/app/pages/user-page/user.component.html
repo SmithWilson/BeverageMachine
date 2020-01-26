@@ -1,0 +1,29 @@
+<p>
+    Счет: {{balance}}
+</p>
+
+<button mat-raised-button
+        style="margin: 5px 0;"
+        (click)="getSurrender()"
+        color="primary">Получить сдачу</button>
+
+<div class="example-button-row">
+    Монеты:
+    <ng-container *ngFor="let coin of coins">
+        <button mat-fab
+                style="margin: 0 10px;"
+                [disabled]="!coin.isActive"
+                (click)="pushCoin(coin)"
+                color="accent">{{coin.par}}</button>
+    </ng-container>
+</div>
+
+<p>Напитки</p>
+<div style="display: flex; flex-flow: row; flex-wrap: wrap; margin: 20px;">
+    <ng-container *ngFor="let drink of drinks">
+        <drink-card [drink]="drink"
+                    (click)="buyDrink(drink)">
+
+        </drink-card>
+    </ng-container>
+</div>
