@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {HttpService} from 'src/app/services/http.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material';
@@ -12,7 +12,7 @@ import {SnackBarService} from 'src/app/services/snackBar.service';
 })
 export class MachineComponent implements OnInit
 {
-    @ViewChild('count', {static: true}) count: TextInput;
+    @ViewChild('count', {static: true}) count: ElementRef;
 
     public isActive: boolean = false;
     public currentCoin = {};

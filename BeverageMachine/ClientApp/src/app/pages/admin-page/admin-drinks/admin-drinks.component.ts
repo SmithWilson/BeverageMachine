@@ -15,9 +15,9 @@ import {RequestOptions, Request, RequestMethod} from '@angular/http';
 })
 export class AdminDrinksComponent implements OnInit
 {
-    @ViewChild('name', {static: true}) name: TextInput;
-    @ViewChild('price', {static: true}) price: TextInput;
-    @ViewChild('count', {static: true}) count: TextInput;
+    @ViewChild('name', {static: true}) name: ElementRef;
+    @ViewChild('price', {static: true}) price: ElementRef;
+    @ViewChild('count', {static: true}) count: ElementRef;
     @ViewChild('imageUploader', {static: true}) imageUploader: ElementRef;
 
     public currentId: number = -1;
