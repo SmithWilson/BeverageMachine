@@ -15,7 +15,7 @@ export class MachineComponent implements OnInit
     @ViewChild('count', {static: true}) count: ElementRef;
 
     public isActive: boolean = false;
-    public currentCoin = {};
+    public currentCoin: MachineModel = {};
     public coins: any = [];
     constructor (
         private http: HttpService,
@@ -28,7 +28,7 @@ export class MachineComponent implements OnInit
         const key = this.activeRoute.snapshot.params['key'];
         const isValidOrStatusCode = await this.http.get(`machine/${ key }`);
        
-        if(isValidOrStatusCode.status == 404)
+        if(isValidOrStatusCode.status === 404)
         {
             this.router.navigate(['/']);
         }
@@ -49,7 +49,7 @@ export class MachineComponent implements OnInit
             this.getCoinParams(this.currentCoin.par, this.isActive, count, this.currentCoin.id));
         if (!isNullOrUndefined(response) && !response.hasOwnProperty('error'))
         {
-            const coin = this.coins.find(x => x.id == this.currentCoin.id);
+            const coin = this.coins.find(x => x.id === this.currentCoin.id);
             const index = this.coins.indexOf(coin);
             this.coins[index] = response;
             this.snackBar.openSnackBar(`Обновлена монета номиналом - ${ this.currentCoin.par }`, 'Закрыть');
